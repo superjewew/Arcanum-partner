@@ -1,24 +1,25 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion 27
+
+
+
     defaultConfig {
-        applicationId "com.mahavira.arcanumpartner"
         minSdkVersion 15
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
+
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
     }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
-    }
-
-    defaultConfig {
-        multiDexEnabled true
     }
 
     dataBinding {
@@ -35,10 +36,10 @@ dependencies {
     def libs = rootProject.ext.libraries
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+
     implementation libs.supportAppCompat
     implementation libs.supportV4
     implementation libs.supportConstraintLayout
-    implementation libs.supportRecyclerView
     testImplementation libs.junit
     androidTestImplementation libs.supportTestRunner
     androidTestImplementation libs.espressoCore
@@ -61,15 +62,12 @@ dependencies {
     annotationProcessor libs.archLifecycleCompiler
 
     // Firebase
-    implementation libs.firebaseCore
     implementation libs.firebaseAuth
-    implementation libs.firebaseFirestore
+    implementation 'com.github.frangsierra:rx2firebase:1.4.0'
 
-    // Parceler
-    implementation libs.parcelerApi
-    annotationProcessor libs.parceler
+    // RxJava
+    implementation libs.rxAndroid
+    implementation libs.rxJava
+
     implementation project(path: ':base')
-    implementation project(path: ':login')
 }
-
-apply plugin: 'com.google.gms.google-services'

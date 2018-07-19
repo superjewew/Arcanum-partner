@@ -1,0 +1,73 @@
+{
+  "project_info": {
+    "project_number": "659381831032",
+    "firebase_url": "https://arcanum-mahavira-app.firebaseio.com",
+    "project_id": "arcanum-mahavira-app",
+    "storage_bucket": "arcanum-mahavira-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:659381831032:android:144a8c4ea0add6b5",
+        "android_client_info": {
+          "package_name": "com.mahavira.arcanumpartner"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "659381831032-l38bup8pddgfrbitnd6uasua2namtk8s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyByGZ3Af598Ih-blerxUo8YpPvKHAlMyNc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:659381831032:android:44dd9da91c7da44d",
+        "android_client_info": {
+          "package_name": "com.mahavira.partnersms"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "659381831032-l38bup8pddgfrbitnd6uasua2namtk8s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyByGZ3Af598Ih-blerxUo8YpPvKHAlMyNc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
