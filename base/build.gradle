@@ -1,0 +1,64 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 27
+
+
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+}
+
+dependencies {
+    def libs = rootProject.ext.libraries
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation libs.supportAppCompat
+    implementation libs.supportV4
+    testImplementation libs.junit
+    androidTestImplementation libs.supportTestRunner
+    androidTestImplementation libs.espressoCore
+    implementation "com.google.android.gms:play-services-tasks:15.0.1"
+
+    // Dagger
+    implementation libs.dagger
+    implementation libs.daggerAndroid
+    implementation libs.daggerAndroidSupport
+    annotationProcessor libs.daggerCompiler
+    annotationProcessor libs.daggerAndroidProcessor
+
+    // DataBinding
+    implementation libs.databindingBaseLibrary
+    implementation libs.databindingLibrary
+
+    // Architecture Component Lifecycle
+    implementation libs.archLifecycleRuntime
+    implementation libs.archLifecycleExtensions
+    implementation libs.archLifecycleCommonJava8
+    annotationProcessor libs.archLifecycleCompiler
+
+    // RxJava
+    implementation libs.rxAndroid
+    implementation libs.rxJava
+}
