@@ -2,13 +2,10 @@ package com.mahavira.partner.profile.data;
 
 import android.support.annotation.NonNull;
 
-import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.mahavira.partner.profile.domain.entity.Partner;
 import com.mahavira.partner.profile.domain.repo.ProfileRepository;
-
-import java.util.List;
 
 import javax.inject.Inject;
 
