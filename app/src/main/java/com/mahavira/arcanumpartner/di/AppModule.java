@@ -5,7 +5,9 @@ import android.content.Context;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.mahavira.arcanumpartner.router.DashboardRouterImpl;
 import com.mahavira.arcanumpartner.router.LoginRouterImpl;
+import com.mahavira.partner.dashboard.presentation.DashboardRouter;
 import com.mahavira.partner.login.LoginRouter;
 
 import javax.inject.Singleton;
@@ -42,5 +44,10 @@ class AppModule {
     @Provides
     FirebaseFirestore provideFirebaseFirestore() {
         return FirebaseFirestore.getInstance();
+    }
+
+    @Provides
+    DashboardRouter provideDashboardRouter() {
+        return new DashboardRouterImpl();
     }
 }

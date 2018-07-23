@@ -1,24 +1,25 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion 27
+
+
+
     defaultConfig {
-        applicationId "com.mahavira.arcanumpartner"
         minSdkVersion 15
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
+
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
     }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
-    }
-
-    defaultConfig {
-        multiDexEnabled true
     }
 
     dataBinding {
@@ -29,6 +30,7 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
 }
 
 dependencies {
@@ -50,27 +52,6 @@ dependencies {
     annotationProcessor libs.daggerCompiler
     annotationProcessor libs.daggerAndroidProcessor
 
-    // DataBinding
-    implementation libs.databindingBaseLibrary
-    implementation libs.databindingLibrary
-
-    // Architecture Component Lifecycle
-    implementation libs.archLifecycleRuntime
-    implementation libs.archLifecycleExtensions
-    implementation libs.archLifecycleCommonJava8
-    annotationProcessor libs.archLifecycleCompiler
-
-    // Firebase
-    implementation libs.firebaseCore
-    implementation libs.firebaseAuth
-    implementation libs.firebaseFirestore
-
-    // Parceler
-    implementation libs.parcelerApi
-    annotationProcessor libs.parceler
     implementation project(path: ':base')
-    implementation project(path: ':login')
-    compile project(path: ':dashboard')
-}
 
-apply plugin: 'com.google.gms.google-services'
+}

@@ -4,6 +4,7 @@ import android.app.Application;
 
 import com.mahavira.arcanumpartner.BaseApplication;
 import com.mahavira.partner.base.di.BaseModule;
+import com.mahavira.partner.dashboard.di.DashboardModule;
 import com.mahavira.partner.login.di.LoginModule;
 
 import javax.inject.Singleton;
@@ -19,7 +20,8 @@ import dagger.android.support.AndroidSupportInjectionModule;
         AppModule.class,
         ActivityBuilderModule.class,
         BaseModule.class,
-        LoginModule.class
+        LoginModule.class,
+        DashboardModule.class
 })
 public interface AppComponent {
 
