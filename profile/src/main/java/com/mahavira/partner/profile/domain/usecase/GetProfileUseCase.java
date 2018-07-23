@@ -23,6 +23,6 @@ public class GetProfileUseCase implements BaseUseCaseWithParam<String, Partner> 
 
     @Override
     public Single<Partner> execute(String param) {
-        return mRepository.getProfileByUsername(param);
+        return mRepository.getProfileByEmail(param);
     }
 }

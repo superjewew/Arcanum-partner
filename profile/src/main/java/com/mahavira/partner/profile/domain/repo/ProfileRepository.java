@@ -11,6 +11,6 @@ import io.reactivex.Single;
  */
 
 public interface ProfileRepository {
-    Single<Partner> getProfileByUsername(String username);
+    Single<Partner> getProfileByEmail(String email);
     Completable updateProfile(Partner partner);
 }

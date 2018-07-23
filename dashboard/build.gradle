@@ -52,6 +52,10 @@ dependencies {
     annotationProcessor libs.daggerCompiler
     annotationProcessor libs.daggerAndroidProcessor
 
-    implementation project(path: ':base')
+    // RxJava
+    implementation libs.rxAndroid
+    implementation libs.rxJava
 
+    implementation project(path: ':base')
+    implementation project(path: ':profile')
 }

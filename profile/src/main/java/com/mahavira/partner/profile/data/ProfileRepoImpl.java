@@ -28,8 +28,8 @@ public class ProfileRepoImpl implements ProfileRepository {
     }
 
     @Override
-    public Single<Partner> getProfileByUsername(String username) {
-        return getValue(mInstance.collection("partner").document(username), Partner.class).toSingle();
+    public Single<Partner> getProfileByEmail(String email) {
+        return getValue(mInstance.collection("partner").document(email), Partner.class).toSingle();
     }
 
     @Override
