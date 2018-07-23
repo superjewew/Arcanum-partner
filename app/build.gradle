@@ -70,6 +70,7 @@ dependencies {
     annotationProcessor libs.parceler
     implementation project(path: ':base')
     implementation project(path: ':login')
+    compile project(path: ':dashboard')
 }
 
 apply plugin: 'com.google.gms.google-services'
