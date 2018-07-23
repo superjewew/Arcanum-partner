@@ -68,9 +68,10 @@ dependencies {
     // Parceler
     implementation libs.parcelerApi
     annotationProcessor libs.parceler
+
     implementation project(path: ':base')
     implementation project(path: ':login')
-    compile project(path: ':dashboard')
+    implementation project(path: ':dashboard')
 }
 
 apply plugin: 'com.google.gms.google-services'

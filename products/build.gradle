@@ -22,13 +22,29 @@ android {
         }
     }
 
+    dataBinding {
+        enabled true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    def libs = rootProject.ext.libraries
 
-    implementation 'com.android.support:appcompat-v7:26.1.0'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation libs.supportAppCompat
+    implementation libs.supportV4
+    implementation libs.supportConstraintLayout
+    implementation libs.supportRecyclerView
+    testImplementation libs.junit
+    androidTestImplementation libs.supportTestRunner
+    androidTestImplementation libs.espressoCore
+
+    // Parceler
+    implementation libs.parcelerApi
+    annotationProcessor libs.parceler
 }
