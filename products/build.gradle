@@ -47,4 +47,18 @@ dependencies {
     // Parceler
     implementation libs.parcelerApi
     annotationProcessor libs.parceler
+
+    // DataBinding
+    implementation libs.databindingBaseLibrary
+    implementation libs.databindingLibrary
+
+    // Architecture Component Lifecycle
+    implementation libs.archLifecycleRuntime
+    implementation libs.archLifecycleExtensions
+    implementation libs.archLifecycleCommonJava8
+    annotationProcessor libs.archLifecycleCompiler
+
+    // RxJava
+    implementation libs.rxAndroid
+    implementation libs.rxJava
 }
