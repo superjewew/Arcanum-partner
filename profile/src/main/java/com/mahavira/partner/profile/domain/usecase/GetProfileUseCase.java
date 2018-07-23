@@ -17,7 +17,7 @@ public class GetProfileUseCase implements BaseUseCaseWithParam<String, Partner> 
     private ProfileRepository mRepository;
 
     @Inject
-    GetProfileUseCase(ProfileRepository repository) {
+    public GetProfileUseCase(ProfileRepository repository) {
         mRepository = repository;
     }
 

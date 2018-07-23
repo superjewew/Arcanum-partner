@@ -3,6 +3,7 @@ package com.mahavira.partner.profile.di;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.mahavira.partner.profile.data.ProfileRepoImpl;
 import com.mahavira.partner.profile.domain.repo.ProfileRepository;
+import com.mahavira.partner.profile.domain.usecase.GetProfileUseCase;
 
 import dagger.Module;
 import dagger.Provides;
@@ -18,5 +19,10 @@ public class ProfileModule {
     @Provides
     ProfileRepository provideProductRepository(FirebaseFirestore firestore) {
         return new ProfileRepoImpl(firestore);
+    }
+
+    @Provides
+    GetProfileUseCase provideGetProfileUseCase(ProfileRepository repository) {
+        return new GetProfileUseCase(repository);
     }
 }
