@@ -1,6 +1,6 @@
-package com.mahavira.partner.products.domain.repo;
+package com.mahavira.partner.profile.domain.repo;
 
-import com.mahavira.partner.products.domain.entity.Boardgame;
+import com.mahavira.partner.profile.domain.entity.Boardgame;
 
 import java.util.List;
 

@@ -1,9 +1,9 @@
-package com.mahavira.partner.products.domain.entity;
+package com.mahavira.partner.profile.domain.entity;
 
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 
-import com.mahavira.partner.products.BR;
+import com.mahavira.partner.profile.BR;
 
 import org.parceler.Parcel;
 

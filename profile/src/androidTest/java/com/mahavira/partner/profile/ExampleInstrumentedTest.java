@@ -1,4 +1,4 @@
-package com.mahavira.partner.products;
+package com.mahavira.partner.profile;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

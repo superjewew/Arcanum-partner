@@ -1,4 +1,4 @@
-package com.mahavira.partner.products;
+package com.mahavira.partner.profile;
 
 import org.junit.Test;
 
