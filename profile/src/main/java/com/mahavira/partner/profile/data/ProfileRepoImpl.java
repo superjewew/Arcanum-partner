@@ -3,6 +3,8 @@ package com.mahavira.partner.profile.data;
 import android.support.annotation.NonNull;
 
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.mahavira.partner.profile.domain.entity.Partner;
 import com.mahavira.partner.profile.domain.repo.ProfileRepository;
 
@@ -21,14 +23,16 @@ import io.reactivex.Single;
 
 public class ProfileRepoImpl implements ProfileRepository {
 
-    @Inject
-    ProfileRepoImpl() {
+    private FirebaseFirestore mInstance;
 
+    @Inject
+    public ProfileRepoImpl(FirebaseFirestore firestore) {
+        mInstance = firestore;
     }
 
     @Override
     public Single<Partner> getProfileByUsername(String username) {
-        return null;
+        return getValue(mInstance.collection("partner").document(username), Partner.class).toSingle();
     }
 
     @Override
@@ -37,10 +41,10 @@ public class ProfileRepoImpl implements ProfileRepository {
     }
 
     @NonNull
-    private <T> Maybe<List<T>> getValue(@NonNull final CollectionReference ref, Class<T> clazz) {
+    private <T> Maybe<T> getValue(@NonNull final DocumentReference ref, Class<T> clazz) {
         return Maybe.create(
                 e -> ref.get()
-                        .addOnCompleteListener(task -> e.onSuccess(task.getResult().toObjects(clazz)))
+                        .addOnCompleteListener(task -> e.onSuccess(task.getResult().toObject(clazz)))
                         .addOnFailureListener(e::onError));
     }
 }
