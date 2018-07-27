@@ -22,13 +22,59 @@ android {
         }
     }
 
+    defaultConfig {
+        multiDexEnabled true
+    }
+
+    dataBinding {
+        enabled true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
-dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation 'com.android.support:appcompat-v7:26.1.0'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+dependencies {
+    def libs = rootProject.ext.libraries
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation libs.supportAppCompat
+    implementation libs.supportV4
+    implementation libs.supportConstraintLayout
+    implementation libs.supportRecyclerView
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+    testImplementation libs.junit
+    androidTestImplementation libs.supportTestRunner
+    androidTestImplementation libs.espressoCore
+
+    // Dagger
+    implementation libs.dagger
+    implementation libs.daggerAndroid
+    implementation libs.daggerAndroidSupport
+    annotationProcessor libs.daggerCompiler
+    annotationProcessor libs.daggerAndroidProcessor
+
+    // DataBinding
+    implementation libs.databindingBaseLibrary
+    implementation libs.databindingLibrary
+
+    // Architecture Component Lifecycle
+    implementation libs.archLifecycleRuntime
+    implementation libs.archLifecycleExtensions
+    implementation libs.archLifecycleCommonJava8
+    annotationProcessor libs.archLifecycleCompiler
+
+    // Firebase
+    implementation libs.firebaseCore
+    implementation libs.firebaseAuth
+    implementation libs.firebaseFirestore
+
+    // Parceler
+    implementation libs.parcelerApi
+    annotationProcessor libs.parceler
+
+    implementation project(path: ':base')
 }
