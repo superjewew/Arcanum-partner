@@ -18,7 +18,8 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/borrowed_games_list"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            tools:listitem="@layout/item_return_list"/>
 
         <ProgressBar
             android:layout_width="wrap_content"
