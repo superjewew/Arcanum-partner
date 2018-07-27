@@ -5,6 +5,7 @@ import android.app.Application;
 import com.mahavira.arcanumpartner.BaseApplication;
 import com.mahavira.partner.base.di.BaseModule;
 import com.mahavira.partner.dashboard.di.DashboardModule;
+import com.mahavira.partner.inventory.di.InventoryModule;
 import com.mahavira.partner.login.di.LoginModule;
 import com.mahavira.partner.profile.di.ProfileModule;
 
@@ -23,7 +24,8 @@ import dagger.android.support.AndroidSupportInjectionModule;
         BaseModule.class,
         LoginModule.class,
         DashboardModule.class,
-        ProfileModule.class
+        ProfileModule.class,
+        InventoryModule.class
 })
 public interface AppComponent {
 

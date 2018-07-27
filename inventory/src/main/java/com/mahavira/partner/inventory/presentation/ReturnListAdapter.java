@@ -1,20 +1,74 @@
 package com.mahavira.partner.inventory.presentation;
 
+import android.content.Context;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+
+import com.mahavira.partner.inventory.databinding.ItemReturnListBinding;
+import com.mahavira.partner.inventory.domain.entity.Boardgame;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by norman on 27/07/18.
+ *
  */
 
-public class ReturnListAdapter {
+public class ReturnListAdapter extends RecyclerView.Adapter<ReturnListAdapter.ReturnListViewHolder> {
+
+    private List<Boardgame> mProducts = new ArrayList<>();
+
+    private Context mContext;
+
+    ReturnListAdapter(Context context) {
+        mContext = context;
+    }
+
+    @NonNull
+    @Override
+    public ReturnListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        LayoutInflater inflater = LayoutInflater.from(mContext);
+
+        ItemReturnListBinding binding = ItemReturnListBinding.inflate(inflater, parent, false);
+
+        return new ReturnListViewHolder(binding);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull ReturnListViewHolder holder, int position) {
+        Boardgame product = mProducts.get(position);
+        holder.bind(product);
+    }
+
+    @Override
+    public int getItemCount() {
+        return mProducts.size();
+    }
+
+    void replaceProducts(List<Boardgame> products) {
+        mProducts = products;
+        notifyDataSetChanged();
+    }
 
     class ReturnListViewHolder extends RecyclerView.ViewHolder {
 
+        private ItemReturnListBinding mBinding;
 
-
-        public ReturnListViewHolder(View itemView) {
-            super(itemView);
+        ReturnListViewHolder(ItemReturnListBinding binding) {
+            super(binding.getRoot());
+            mBinding = binding;
         }
+
+        void bind(Boardgame product) {
+            mBinding.setProduct(product);
+            mBinding.executePendingBindings();
+        }
+    }
+
+    interface ItemClickListener {
+        void onItemClicked(Boardgame product);
     }
 }
