@@ -8,7 +8,7 @@
             type="com.mahavira.partner.inventory.domain.entity.Boardgame"/>
         <variable
             name="clickListener"
-            type="com.mahavira.partner.inventory.presentation.ReturnListAdapter.ItemClickListener"/>
+            type="com.mahavira.partner.inventory.presentation.returnlist.ReturnListAdapter.ItemClickListener"/>
     </data>
 
     <android.support.constraint.ConstraintLayout

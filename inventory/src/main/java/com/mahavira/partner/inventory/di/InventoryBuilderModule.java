@@ -3,8 +3,8 @@ package com.mahavira.partner.inventory.di;
 import android.arch.lifecycle.ViewModel;
 
 import com.mahavira.partner.base.di.ViewModelKey;
-import com.mahavira.partner.inventory.presentation.ReturnListActivity;
-import com.mahavira.partner.inventory.presentation.ReturnListViewModel;
+import com.mahavira.partner.inventory.presentation.returnlist.ReturnListActivity;
+import com.mahavira.partner.inventory.presentation.returnlist.ReturnListViewModel;
 
 import dagger.Binds;
 import dagger.Module;

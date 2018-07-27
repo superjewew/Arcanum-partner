@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.mahavira.partner.inventory.presentation.InventoryRouter;
-import com.mahavira.partner.inventory.presentation.ReturnListActivity;
+import com.mahavira.partner.inventory.presentation.returnlist.ReturnListActivity;
 
 /**
  * Created by norman on 27/07/18.

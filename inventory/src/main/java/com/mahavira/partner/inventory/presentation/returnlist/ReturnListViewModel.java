@@ -1,4 +1,4 @@
-package com.mahavira.partner.inventory.presentation;
+package com.mahavira.partner.inventory.presentation.returnlist;
 
 import android.arch.lifecycle.MutableLiveData;
 import android.databinding.ObservableBoolean;
