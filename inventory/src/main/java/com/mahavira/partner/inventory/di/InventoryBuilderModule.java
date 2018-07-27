@@ -1,10 +1,13 @@
 package com.mahavira.partner.inventory.di;
 
+import android.arch.lifecycle.ViewModel;
+
 import com.mahavira.partner.base.di.ViewModelKey;
 import com.mahavira.partner.inventory.presentation.ReturnListActivity;
 import com.mahavira.partner.inventory.presentation.ReturnListViewModel;
 
 import dagger.Binds;
+import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
 import dagger.multibindings.IntoMap;
 
@@ -12,6 +15,7 @@ import dagger.multibindings.IntoMap;
  * Created by norman on 27/07/18.
  */
 
+@Module
 public abstract class InventoryBuilderModule {
 
     @ContributesAndroidInjector
@@ -20,5 +24,5 @@ public abstract class InventoryBuilderModule {
     @Binds
     @IntoMap
     @ViewModelKey(ReturnListViewModel.class)
-    abstract ReturnListViewModel bindReturnListViewModel(ReturnListViewModel returnListViewModel);
+    abstract ViewModel bindReturnListViewModel(ReturnListViewModel returnListViewModel);
 }

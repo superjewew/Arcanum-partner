@@ -73,7 +73,7 @@ dependencies {
     implementation project(path: ':login')
     implementation project(path: ':dashboard')
     implementation project(path: ':profile')
-    compile project(path: ':inventory')
+    implementation project(path: ':inventory')
 }
 
 apply plugin: 'com.google.gms.google-services'

@@ -7,6 +7,7 @@
         <variable
             name="viewModel"
             type="com.mahavira.partner.inventory.presentation.ReturnListViewModel"/>
+        <import type="android.view.View"/>
     </data>
 
     <android.support.constraint.ConstraintLayout
@@ -17,7 +18,7 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/borrowed_games_list"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="match_parent"/>
 
         <ProgressBar
             android:layout_width="wrap_content"

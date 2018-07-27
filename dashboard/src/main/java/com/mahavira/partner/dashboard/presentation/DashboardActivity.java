@@ -8,12 +8,21 @@ import com.mahavira.partner.base.presentation.BaseActivity;
 import com.mahavira.partner.base.presentation.ExtraInjectable;
 import com.mahavira.partner.dashboard.R;
 import com.mahavira.partner.dashboard.databinding.ActivityDashboardBinding;
+import com.mahavira.partner.inventory.domain.entity.Partner;
+import com.mahavira.partner.inventory.presentation.InventoryRouter;
+
+import javax.inject.Inject;
+
+import dagger.multibindings.IntoMap;
 
 public class DashboardActivity extends BaseActivity<ActivityDashboardBinding, DashboardViewModel> implements ExtraInjectable {
 
     public static final String EMAIL_EXTRA = "email";
 
     private String mPartnerEmail;
+
+    @Inject
+    InventoryRouter mInvRouter;
 
     @Override
     public int getViewModelBindingVariable() {
@@ -28,6 +37,8 @@ public class DashboardActivity extends BaseActivity<ActivityDashboardBinding, Da
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        getDataBinding().returnGamesBtn.setOnClickListener(v -> mInvRouter.goToReturnList(this, mPartnerEmail));
 
         getViewModel().getPartnerData().observe(this, partner -> {
             if(partner != null) {

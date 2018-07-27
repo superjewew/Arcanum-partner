@@ -1,13 +1,12 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 26
-
+    compileSdkVersion 27
 
 
     defaultConfig {
         minSdkVersion 15
-        targetSdkVersion 26
+        targetSdkVersion 27
         versionCode 1
         versionName "1.0"
 
@@ -45,7 +44,6 @@ dependencies {
     implementation libs.supportV4
     implementation libs.supportConstraintLayout
     implementation libs.supportRecyclerView
-    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
     testImplementation libs.junit
     androidTestImplementation libs.supportTestRunner
     androidTestImplementation libs.espressoCore

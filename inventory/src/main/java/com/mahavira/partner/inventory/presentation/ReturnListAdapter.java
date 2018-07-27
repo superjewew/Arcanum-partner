@@ -23,8 +23,11 @@ public class ReturnListAdapter extends RecyclerView.Adapter<ReturnListAdapter.Re
 
     private Context mContext;
 
-    ReturnListAdapter(Context context) {
+    ReturnListViewModel mViewModel;
+
+    ReturnListAdapter(Context context, ReturnListViewModel viewModel) {
         mContext = context;
+        mViewModel = viewModel;
     }
 
     @NonNull
@@ -63,12 +66,14 @@ public class ReturnListAdapter extends RecyclerView.Adapter<ReturnListAdapter.Re
         }
 
         void bind(Boardgame product) {
+            ItemClickListener listener = product1 -> mViewModel.getProductClickedEvent().setValue(product1);
             mBinding.setProduct(product);
+            mBinding.setClickListener(listener);
             mBinding.executePendingBindings();
         }
     }
 
-    interface ItemClickListener {
+    public interface ItemClickListener {
         void onItemClicked(Boardgame product);
     }
 }

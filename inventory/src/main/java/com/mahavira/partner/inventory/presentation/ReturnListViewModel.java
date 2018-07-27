@@ -26,6 +26,8 @@ public class ReturnListViewModel extends BaseViewModel {
 
     private final MutableLiveData<Resource<List<Boardgame>>> mBorrowedGamesData = new MutableLiveData<>();
 
+    private final MutableLiveData<Boardgame> mProductClickedEvent = new MutableLiveData<>();
+
     private GetCurrentBorrowedGamesUseCase mUseCase;
 
     @Inject
@@ -35,6 +37,10 @@ public class ReturnListViewModel extends BaseViewModel {
 
     MutableLiveData<Resource<List<Boardgame>>> getBorrowedGamesData() {
         return mBorrowedGamesData;
+    }
+
+    MutableLiveData<Boardgame> getProductClickedEvent() {
+        return mProductClickedEvent;
     }
 
     void attemptGetBorrowed(String email) {

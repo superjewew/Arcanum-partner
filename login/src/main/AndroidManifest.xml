@@ -3,7 +3,13 @@
     package="com.mahavira.partner.login">
 
     <application>
-        <activity android:name="com.mahavira.partner.login.presentation.LoginActivity"/>
+        <activity android:name="com.mahavira.partner.login.presentation.LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

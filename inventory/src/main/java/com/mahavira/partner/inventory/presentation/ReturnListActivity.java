@@ -58,7 +58,7 @@ public class ReturnListActivity extends BaseActivity<ActivityReturnListBinding, 
     }
 
     private void setupAdapter() {
-        mAdapter = new ReturnListAdapter(this);
+        mAdapter = new ReturnListAdapter(this, getViewModel());
     }
 
     @Override
