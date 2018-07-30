@@ -5,6 +5,8 @@ import android.databinding.Bindable;
 
 import org.parceler.Parcel;
 
+import java.util.List;
+
 /**
  * Created by norman on 17/07/18.
  *
@@ -14,6 +16,7 @@ import org.parceler.Parcel;
 public class Boardgame extends BaseObservable {
     String name;
     int quantity;
+    List<String> component;
 
     public String getName() {
         return name;
@@ -30,16 +33,13 @@ public class Boardgame extends BaseObservable {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
-//        notifyPropertyChanged(BR.quantity);
     }
 
-    public void addQuantity() {
-        quantity++;
-//        notifyPropertyChanged(BR.quantity);
+    public List<String> getComponent() {
+        return component;
     }
 
-    public void reduceQuantity() {
-        quantity--;
-//        notifyPropertyChanged(BR.quantity);
+    public void setComponent(List<String> component) {
+        this.component = component;
     }
 }
