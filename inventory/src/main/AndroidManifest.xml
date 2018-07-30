@@ -3,7 +3,8 @@
     package="com.mahavira.partner.inventory">
 
     <application>
-        <activity android:name=".presentation.returnlist.ReturnListActivity"></activity>
+        <activity android:name=".presentation.returnlist.ReturnListActivity" />
+        <activity android:name=".presentation.returnform.ReturnFormActivity" />
     </application>
 
 </manifest>
