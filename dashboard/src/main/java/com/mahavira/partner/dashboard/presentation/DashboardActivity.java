@@ -2,8 +2,10 @@ package com.mahavira.partner.dashboard.presentation;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.util.Log;
 import android.widget.Toast;
 
+import com.mahavira.partner.base.prefs.UserSharedPrefs;
 import com.mahavira.partner.base.presentation.BaseActivity;
 import com.mahavira.partner.base.presentation.ExtraInjectable;
 import com.mahavira.partner.dashboard.R;
@@ -23,6 +25,9 @@ public class DashboardActivity extends BaseActivity<ActivityDashboardBinding, Da
 
     @Inject
     InventoryRouter mInvRouter;
+
+    @Inject
+    UserSharedPrefs mPrefs;
 
     @Override
     public int getViewModelBindingVariable() {
@@ -45,6 +50,7 @@ public class DashboardActivity extends BaseActivity<ActivityDashboardBinding, Da
                 switch (partner.status) {
                     case SUCCESS:
                         Toast.makeText(this, "Load Profile Success", Toast.LENGTH_SHORT).show();
+                        mPrefs.setLoggedUserEmail(partner.data.getEmail());
                         break;
                     case ERROR:
                         Toast.makeText(this, "Load Profile Failed, " + partner.message, Toast.LENGTH_SHORT).show();
