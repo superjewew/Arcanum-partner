@@ -31,10 +31,10 @@ public class ProfileLoggedRepositoryImpl implements ProfileLoggedRepository {
     }
 
     @Override
-    public Completable setLoggedProfileEmail(Partner partner) {
+    public Completable setLoggedProfileEmail(String email) {
         return Completable.create(emitter -> {
             SharedPreferences.Editor editor = mSharedPref.edit();
-            editor.putString(LOGGED_EMAIL, partner.getEmail());
+            editor.putString(LOGGED_EMAIL, email);
             editor.apply();
             emitter.onComplete();
         });

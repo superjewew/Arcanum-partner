@@ -7,6 +7,7 @@ import com.mahavira.partner.base.core.Resource;
 import com.mahavira.partner.base.presentation.BaseViewModel;
 import com.mahavira.partner.profile.domain.entity.Partner;
 import com.mahavira.partner.profile.domain.usecase.GetProfileUseCase;
+import com.mahavira.partner.profile.domain.usecase.SetLoggedProfileUseCase;
 
 import javax.inject.Inject;
 
@@ -29,9 +30,12 @@ public class DashboardViewModel extends BaseViewModel {
 
     private GetProfileUseCase mGetProfileUseCase;
 
+    private SetLoggedProfileUseCase mSetLoggedProfileUseCase;
+
     @Inject
-    DashboardViewModel(GetProfileUseCase getProfileUseCase) {
+    DashboardViewModel(GetProfileUseCase getProfileUseCase, SetLoggedProfileUseCase setLoggedProfileUseCase) {
         mGetProfileUseCase = getProfileUseCase;
+        mSetLoggedProfileUseCase = setLoggedProfileUseCase;
     }
 
     @Override
@@ -63,5 +67,20 @@ public class DashboardViewModel extends BaseViewModel {
 
     private void doOnSubscribe() {
         mShowLoading.set(true);
+    }
+
+    void attemptSaveLoggedProfile(String email) {
+        try {
+            mSetLoggedProfileUseCase.execute(email)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(this::onSaveSuccess, this::onFailed);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void onSaveSuccess() {
+
     }
 }

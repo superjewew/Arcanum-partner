@@ -60,6 +60,8 @@ public class DashboardActivity extends BaseActivity<ActivityDashboardBinding, Da
         });
 
         getViewModel().attemptGetProfile(mPartnerEmail);
+
+        getViewModel().attemptSaveLoggedProfile(mPartnerEmail);
     }
 
     @Override

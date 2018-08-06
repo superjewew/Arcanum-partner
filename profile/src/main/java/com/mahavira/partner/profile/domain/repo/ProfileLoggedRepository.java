@@ -1,7 +1,5 @@
 package com.mahavira.partner.profile.domain.repo;
 
-import com.mahavira.partner.profile.domain.entity.Partner;
-
 import io.reactivex.Completable;
 import io.reactivex.Single;
 
@@ -10,6 +8,6 @@ import io.reactivex.Single;
  */
 
 public interface ProfileLoggedRepository {
-    Completable setLoggedProfileEmail(Partner partner);
+    Completable setLoggedProfileEmail(String email);
     Single<String> getLoggedProfileEmail();
 }
