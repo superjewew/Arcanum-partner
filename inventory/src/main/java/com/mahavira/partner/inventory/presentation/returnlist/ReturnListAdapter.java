@@ -6,8 +6,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
+import com.mahavira.partner.base.entity.Boardgame;
 import com.mahavira.partner.inventory.databinding.ItemReturnListBinding;
-import com.mahavira.partner.inventory.domain.entity.Boardgame;
 
 import java.util.ArrayList;
 import java.util.List;

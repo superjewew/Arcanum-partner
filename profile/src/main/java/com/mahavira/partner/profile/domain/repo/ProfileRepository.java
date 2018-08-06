@@ -1,6 +1,6 @@
 package com.mahavira.partner.profile.domain.repo;
 
-import com.mahavira.partner.profile.domain.entity.Partner;
+import com.mahavira.partner.base.entity.Partner;
 
 import io.reactivex.Completable;
 import io.reactivex.Single;

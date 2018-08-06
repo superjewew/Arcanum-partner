@@ -4,8 +4,8 @@ import android.arch.lifecycle.MutableLiveData;
 import android.databinding.ObservableBoolean;
 
 import com.mahavira.partner.base.core.Resource;
+import com.mahavira.partner.base.entity.Boardgame;
 import com.mahavira.partner.base.presentation.BaseViewModel;
-import com.mahavira.partner.inventory.domain.entity.Boardgame;
 import com.mahavira.partner.inventory.domain.usecase.GetCurrentBorrowedGamesUseCase;
 
 import java.util.List;

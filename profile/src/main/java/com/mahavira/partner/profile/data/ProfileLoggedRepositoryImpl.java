@@ -4,8 +4,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 
-import com.google.firebase.firestore.DocumentReference;
-import com.mahavira.partner.profile.domain.entity.Partner;
 import com.mahavira.partner.profile.domain.repo.ProfileLoggedRepository;
 
 import javax.inject.Inject;

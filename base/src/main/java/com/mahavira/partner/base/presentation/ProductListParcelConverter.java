@@ -1,9 +1,9 @@
-package com.mahavira.partner.inventory.presentation;
+package com.mahavira.partner.base.presentation;
 
 import android.os.Parcel;
 
 
-import com.mahavira.partner.inventory.domain.entity.Boardgame;
+import com.mahavira.partner.base.entity.Boardgame;
 
 import org.parceler.Parcels;
 import org.parceler.converter.ArrayListParcelConverter;

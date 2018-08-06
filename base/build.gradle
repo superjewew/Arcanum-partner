@@ -65,4 +65,8 @@ dependencies {
     // RxJava
     implementation libs.rxAndroid
     implementation libs.rxJava
+
+    // Parceler
+    implementation libs.parcelerApi
+    annotationProcessor libs.parceler
 }

@@ -79,4 +79,5 @@ dependencies {
     implementation libs.rxJava
 
     implementation project(path: ':base')
+    compile project(path: ':profile')
 }

@@ -1,6 +1,6 @@
 package com.mahavira.partner.inventory.domain.repo;
 
-import com.mahavira.partner.inventory.domain.entity.Boardgame;
+import com.mahavira.partner.base.entity.Boardgame;
 import com.mahavira.partner.inventory.domain.entity.ReturnRequest;
 
 import java.util.List;

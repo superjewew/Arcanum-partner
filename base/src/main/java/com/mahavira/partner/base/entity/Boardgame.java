@@ -1,4 +1,4 @@
-package com.mahavira.partner.inventory.domain.entity;
+package com.mahavira.partner.base.entity;
 
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">inventory</string>
+    <string name="return_games_btn_txt">Return Games</string>
 </resources>

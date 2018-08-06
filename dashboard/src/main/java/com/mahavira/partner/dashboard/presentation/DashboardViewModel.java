@@ -4,8 +4,8 @@ import android.arch.lifecycle.MutableLiveData;
 import android.databinding.ObservableBoolean;
 
 import com.mahavira.partner.base.core.Resource;
+import com.mahavira.partner.base.entity.Partner;
 import com.mahavira.partner.base.presentation.BaseViewModel;
-import com.mahavira.partner.profile.domain.entity.Partner;
 import com.mahavira.partner.profile.domain.usecase.GetProfileUseCase;
 import com.mahavira.partner.profile.domain.usecase.SetLoggedProfileUseCase;
 

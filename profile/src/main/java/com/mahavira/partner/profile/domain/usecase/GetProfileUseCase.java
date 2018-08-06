@@ -1,7 +1,7 @@
 package com.mahavira.partner.profile.domain.usecase;
 
 import com.mahavira.partner.base.core.BaseUseCaseWithParam;
-import com.mahavira.partner.profile.domain.entity.Partner;
+import com.mahavira.partner.base.entity.Partner;
 import com.mahavira.partner.profile.domain.repo.ProfileRepository;
 
 import javax.inject.Inject;

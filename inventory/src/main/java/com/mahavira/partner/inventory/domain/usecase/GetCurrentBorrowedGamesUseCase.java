@@ -1,7 +1,7 @@
 package com.mahavira.partner.inventory.domain.usecase;
 
 import com.mahavira.partner.base.core.BaseUseCaseWithParam;
-import com.mahavira.partner.inventory.domain.entity.Boardgame;
+import com.mahavira.partner.base.entity.Boardgame;
 import com.mahavira.partner.inventory.domain.repo.InventoryRepository;
 
 import java.util.List;

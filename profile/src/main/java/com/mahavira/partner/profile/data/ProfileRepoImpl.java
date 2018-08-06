@@ -4,7 +4,7 @@ import android.support.annotation.NonNull;
 
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.mahavira.partner.profile.domain.entity.Partner;
+import com.mahavira.partner.base.entity.Partner;
 import com.mahavira.partner.profile.domain.repo.ProfileRepository;
 
 import javax.inject.Inject;

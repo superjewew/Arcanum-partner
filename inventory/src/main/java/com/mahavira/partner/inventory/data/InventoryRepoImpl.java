@@ -5,8 +5,8 @@ import android.support.annotation.NonNull;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.mahavira.partner.inventory.domain.entity.Boardgame;
-import com.mahavira.partner.inventory.domain.entity.Partner;
+import com.mahavira.partner.base.entity.Boardgame;
+import com.mahavira.partner.base.entity.Partner;
 import com.mahavira.partner.inventory.domain.entity.ReturnRequest;
 import com.mahavira.partner.inventory.domain.repo.InventoryRepository;
 

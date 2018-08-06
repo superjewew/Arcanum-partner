@@ -1,7 +1,6 @@
-package com.mahavira.partner.inventory.domain.entity;
+package com.mahavira.partner.base.entity;
 
-
-import com.mahavira.partner.inventory.presentation.ProductListParcelConverter;
+import com.mahavira.partner.base.presentation.ProductListParcelConverter;
 
 import org.parceler.Parcel;
 import org.parceler.ParcelPropertyConverter;
