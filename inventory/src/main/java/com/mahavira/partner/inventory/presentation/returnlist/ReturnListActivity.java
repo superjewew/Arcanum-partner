@@ -10,6 +10,9 @@ import com.mahavira.partner.base.presentation.ExtraInjectable;
 import com.mahavira.partner.inventory.BR;
 import com.mahavira.partner.inventory.R;
 import com.mahavira.partner.inventory.databinding.ActivityReturnListBinding;
+import com.mahavira.partner.inventory.presentation.InventoryRouter;
+
+import javax.inject.Inject;
 
 public class ReturnListActivity extends BaseActivity<ActivityReturnListBinding, ReturnListViewModel> implements ExtraInjectable{
 
@@ -18,6 +21,9 @@ public class ReturnListActivity extends BaseActivity<ActivityReturnListBinding, 
     private ReturnListAdapter mAdapter;
 
     private String mPartnerEmail;
+
+    @Inject
+    InventoryRouter mRouter;
 
     @Override
     public int getViewModelBindingVariable() {
@@ -46,6 +52,12 @@ public class ReturnListActivity extends BaseActivity<ActivityReturnListBinding, 
                         Toast.makeText(this, "Error retrieving data, " + products.message, Toast.LENGTH_SHORT).show();
                         break;
                 }
+            }
+        });
+
+        getViewModel().getProductClickedEvent().observe(this, boardgame -> {
+            if(boardgame != null) {
+                mRouter.goToReturnForm(this, boardgame);
             }
         });
 
