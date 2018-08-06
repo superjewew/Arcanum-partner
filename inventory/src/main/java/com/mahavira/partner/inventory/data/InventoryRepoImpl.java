@@ -2,16 +2,19 @@ package com.mahavira.partner.inventory.data;
 
 import android.support.annotation.NonNull;
 
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.mahavira.partner.inventory.domain.entity.Boardgame;
 import com.mahavira.partner.inventory.domain.entity.Partner;
+import com.mahavira.partner.inventory.domain.entity.ReturnRequest;
 import com.mahavira.partner.inventory.domain.repo.InventoryRepository;
 
 import java.util.List;
 
 import javax.inject.Inject;
 
+import io.reactivex.Completable;
 import io.reactivex.Maybe;
 import io.reactivex.Single;
 
@@ -23,6 +26,8 @@ import io.reactivex.Single;
 public class InventoryRepoImpl implements InventoryRepository {
 
     private static final String PARTNER_COLLECTION = "partner";
+
+    private static final String RETURN_REQUEST_COLLECTION = "return_request";
 
     private FirebaseFirestore mInstance;
 
@@ -37,11 +42,24 @@ public class InventoryRepoImpl implements InventoryRepository {
         return partner.map(Partner::getBorrowedGames);
     }
 
+    @Override
+    public Completable returnGames(ReturnRequest request) {
+        return addValue(mInstance.collection(RETURN_REQUEST_COLLECTION), request);
+    }
+
     @NonNull
     private <T> Maybe<T> getValue(@NonNull final DocumentReference ref, Class<T> clazz) {
         return Maybe.create(
                 e -> ref.get()
                         .addOnCompleteListener(task -> e.onSuccess(task.getResult().toObject(clazz)))
+                        .addOnFailureListener(e::onError));
+    }
+
+    @NonNull
+    private Completable addValue(@NonNull final CollectionReference ref, final Object value) {
+        return Completable.create(
+                e -> ref.add(value)
+                        .addOnSuccessListener(documentReference -> e.onComplete())
                         .addOnFailureListener(e::onError));
     }
 }

@@ -4,6 +4,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.mahavira.partner.inventory.data.InventoryRepoImpl;
 import com.mahavira.partner.inventory.domain.repo.InventoryRepository;
 import com.mahavira.partner.inventory.domain.usecase.GetCurrentBorrowedGamesUseCase;
+import com.mahavira.partner.inventory.domain.usecase.ReturnGamesUseCase;
 
 import javax.inject.Singleton;
 
@@ -27,5 +28,10 @@ public class InventoryModule {
     @Provides
     GetCurrentBorrowedGamesUseCase provideGetBorrowedUseCase(InventoryRepository repository) {
         return new GetCurrentBorrowedGamesUseCase(repository);
+    }
+
+    @Provides
+    ReturnGamesUseCase provideReturnGamesUseCase(InventoryRepository repository) {
+        return new ReturnGamesUseCase(repository);
     }
 }
