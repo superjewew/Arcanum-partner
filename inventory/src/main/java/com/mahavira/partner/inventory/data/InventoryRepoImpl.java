@@ -25,6 +25,8 @@ import io.reactivex.Single;
 
 public class InventoryRepoImpl implements InventoryRepository {
 
+    private static final String PRODUCT_COLLECTION = "products";
+
     private static final String PARTNER_COLLECTION = "partner";
 
     private static final String RETURN_REQUEST_COLLECTION = "return_request";
@@ -38,13 +40,20 @@ public class InventoryRepoImpl implements InventoryRepository {
 
     @Override
     public Single<List<String>> getPartnerBorrowedGames(String email) {
-        Single<Partner> partner = getValue(mInstance.collection(PARTNER_COLLECTION).document(email), Partner.class).toSingle();
+        Single<Partner> partner = getValue(
+                mInstance.collection(PARTNER_COLLECTION).document(email), Partner.class).toSingle();
         return partner.map(Partner::getBorrowedGames);
     }
 
     @Override
     public Completable returnGames(ReturnRequest request) {
         return addValue(mInstance.collection(RETURN_REQUEST_COLLECTION), request);
+    }
+
+    @Override
+    public Single<Boardgame> getProductByName(String param) {
+        return getValue(mInstance.collection(PRODUCT_COLLECTION).document(param), Boardgame.class)
+                .toSingle();
     }
 
     @NonNull

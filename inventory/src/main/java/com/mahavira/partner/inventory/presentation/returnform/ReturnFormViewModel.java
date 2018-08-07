@@ -8,6 +8,7 @@ import com.mahavira.partner.base.entity.Boardgame;
 import com.mahavira.partner.base.entity.Partner;
 import com.mahavira.partner.base.presentation.BaseViewModel;
 import com.mahavira.partner.inventory.domain.entity.ReturnRequest;
+import com.mahavira.partner.inventory.domain.usecase.GetProductByNameUseCase;
 import com.mahavira.partner.inventory.domain.usecase.ReturnGamesUseCase;
 import com.mahavira.partner.profile.domain.usecase.GetLoggedProfileUseCase;
 
@@ -29,16 +30,22 @@ public class ReturnFormViewModel extends BaseViewModel {
 
     private final MutableLiveData<Resource<Partner>> mPartnerData = new MutableLiveData<>();
 
+    private final MutableLiveData<Resource<Boardgame>> mBoardgameData = new MutableLiveData<>();
+
     private final CompositeDisposable mDisposable = new CompositeDisposable();
 
     private ReturnGamesUseCase mReturnGamesUseCase;
 
     private GetLoggedProfileUseCase mGetProfileUseCase;
 
+    private GetProductByNameUseCase mGetProductByNameUseCase;
+
     @Inject
-    ReturnFormViewModel(ReturnGamesUseCase useCase, GetLoggedProfileUseCase getProfileUseCase) {
+    ReturnFormViewModel(ReturnGamesUseCase useCase, GetLoggedProfileUseCase getProfileUseCase,
+                        GetProductByNameUseCase getProductByNameUseCase) {
         mReturnGamesUseCase = useCase;
         mGetProfileUseCase = getProfileUseCase;
+        mGetProductByNameUseCase = getProductByNameUseCase;
     }
 
     @Override
@@ -52,6 +59,10 @@ public class ReturnFormViewModel extends BaseViewModel {
 
     public MutableLiveData<Resource<Partner>> getPartnerData() {
         return mPartnerData;
+    }
+
+    public MutableLiveData<Resource<Boardgame>> getBoardgameData() {
+        return mBoardgameData;
     }
 
     void attemptGetProfile() {
@@ -69,6 +80,22 @@ public class ReturnFormViewModel extends BaseViewModel {
     private void onFailed(Throwable throwable) {
         mShowLoading.set(false);
         mPartnerData.setValue(Resource.error(null, throwable.getLocalizedMessage(), null));
+    }
+
+    void attemptGetBoardgameData(String name) {
+        mDisposable.add(mGetProductByNameUseCase.execute(name)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe(__ -> doOnSubscribe())
+                .subscribe(this::onProductDataSuccess, this::onProductDataFailed));
+    }
+
+    private void onProductDataFailed(Throwable throwable) {
+        mBoardgameData.setValue(Resource.error(null, throwable.getLocalizedMessage(), null));
+    }
+
+    private void onProductDataSuccess(Boardgame boardgame) {
+        mBoardgameData.setValue(Resource.success(boardgame));
     }
 
     public void attemptReturnGames(Boardgame product, Partner partner) {

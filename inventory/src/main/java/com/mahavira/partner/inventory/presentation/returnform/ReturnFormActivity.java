@@ -36,9 +36,25 @@ public class ReturnFormActivity extends BaseActivity<ActivityReturnFormBinding, 
 
         getAndObservePartnerData();
         getAndObserveReturnRequestData();
+        getAndObserveBoardgameData();
 
         getViewModel().attemptGetProfile();
-//        getDataBinding().setProduct(mProduct);
+        getViewModel().attemptGetBoardgameData(mProduct);
+    }
+
+    private void getAndObserveBoardgameData() {
+        getViewModel().getBoardgameData().observe(this, boardgameResource -> {
+            if(boardgameResource != null) {
+                switch (boardgameResource.status) {
+                    case SUCCESS:
+                        getDataBinding().setProduct(boardgameResource.data);
+                        break;
+                    case ERROR:
+                        Toast.makeText(this, boardgameResource.message, Toast.LENGTH_SHORT).show();
+                        break;
+                }
+            }
+        });
     }
 
     private void getAndObserveReturnRequestData() {

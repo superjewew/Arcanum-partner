@@ -16,7 +16,7 @@ import java.util.List;
 public class Boardgame extends BaseObservable {
     String name;
     int quantity;
-    List<String> component;
+    List<String> components;
 
     public String getName() {
         return name;
@@ -35,11 +35,11 @@ public class Boardgame extends BaseObservable {
         this.quantity = quantity;
     }
 
-    public List<String> getComponent() {
-        return component;
+    public List<String> getComponents() {
+        return components;
     }
 
-    public void setComponent(List<String> component) {
-        this.component = component;
+    public void setComponents(List<String> component) {
+        this.components = component;
     }
 }
