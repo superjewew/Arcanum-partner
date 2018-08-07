@@ -27,9 +27,9 @@ public class InventoryRouterImpl implements InventoryRouter {
     }
 
     @Override
-    public void goToReturnForm(Context context, Boardgame product) {
+    public void goToReturnForm(Context context, String product) {
         Intent intent = new Intent(context, ReturnFormActivity.class);
-        intent.putExtra(PRODUCT_EXTRA, Parcels.wrap(product));
+        intent.putExtra(PRODUCT_EXTRA, product);
         context.startActivity(intent);
     }
 }

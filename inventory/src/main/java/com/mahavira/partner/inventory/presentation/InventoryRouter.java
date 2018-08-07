@@ -11,5 +11,5 @@ import com.mahavira.partner.base.entity.Boardgame;
 
 public interface InventoryRouter {
     void goToReturnList(Context context, String email);
-    void goToReturnForm(Context context, Boardgame product);
+    void goToReturnForm(Context context, String product);
 }

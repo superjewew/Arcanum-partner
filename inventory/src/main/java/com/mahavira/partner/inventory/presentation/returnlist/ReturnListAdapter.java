@@ -6,7 +6,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
-import com.mahavira.partner.base.entity.Boardgame;
 import com.mahavira.partner.inventory.databinding.ItemReturnListBinding;
 
 import java.util.ArrayList;
@@ -19,7 +18,7 @@ import java.util.List;
 
 public class ReturnListAdapter extends RecyclerView.Adapter<ReturnListAdapter.ReturnListViewHolder> {
 
-    private List<Boardgame> mProducts = new ArrayList<>();
+    private List<String> mProducts = new ArrayList<>();
 
     private Context mContext;
 
@@ -42,7 +41,7 @@ public class ReturnListAdapter extends RecyclerView.Adapter<ReturnListAdapter.Re
 
     @Override
     public void onBindViewHolder(@NonNull ReturnListViewHolder holder, int position) {
-        Boardgame product = mProducts.get(position);
+        String product = mProducts.get(position);
         holder.bind(product);
     }
 
@@ -51,7 +50,7 @@ public class ReturnListAdapter extends RecyclerView.Adapter<ReturnListAdapter.Re
         return mProducts.size();
     }
 
-    void replaceProducts(List<Boardgame> products) {
+    void replaceProducts(List<String> products) {
         mProducts = products;
         notifyDataSetChanged();
     }
@@ -65,7 +64,7 @@ public class ReturnListAdapter extends RecyclerView.Adapter<ReturnListAdapter.Re
             mBinding = binding;
         }
 
-        void bind(Boardgame product) {
+        void bind(String product) {
             ItemClickListener listener = product1 -> mViewModel.getProductClickedEvent().setValue(product1);
             mBinding.setProduct(product);
             mBinding.setClickListener(listener);
@@ -74,6 +73,6 @@ public class ReturnListAdapter extends RecyclerView.Adapter<ReturnListAdapter.Re
     }
 
     public interface ItemClickListener {
-        void onItemClicked(Boardgame product);
+        void onItemClicked(String product);
     }
 }

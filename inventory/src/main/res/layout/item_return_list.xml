@@ -5,7 +5,7 @@
     <data>
         <variable
             name="product"
-            type="com.mahavira.partner.base.entity.Boardgame"/>
+            type="String"/>
         <variable
             name="clickListener"
             type="com.mahavira.partner.inventory.presentation.returnlist.ReturnListAdapter.ItemClickListener"/>
@@ -20,7 +20,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{product.name}"
+            android:text="@{product}"
             tools:text="123123"/>
 
     </android.support.constraint.ConstraintLayout>

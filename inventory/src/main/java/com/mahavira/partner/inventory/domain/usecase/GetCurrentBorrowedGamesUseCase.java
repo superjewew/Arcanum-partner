@@ -15,7 +15,7 @@ import io.reactivex.Single;
  *
  */
 
-public class GetCurrentBorrowedGamesUseCase implements BaseUseCaseWithParam<String, List<Boardgame>> {
+public class GetCurrentBorrowedGamesUseCase implements BaseUseCaseWithParam<String, List<String>> {
 
     private InventoryRepository mRepository;
 
@@ -25,7 +25,7 @@ public class GetCurrentBorrowedGamesUseCase implements BaseUseCaseWithParam<Stri
     }
 
     @Override
-    public Single<List<Boardgame>> execute(String param) {
+    public Single<List<String>> execute(String param) {
         return mRepository.getPartnerBorrowedGames(param);
     }
 }

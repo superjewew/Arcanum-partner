@@ -24,9 +24,9 @@ public class ReturnListViewModel extends BaseViewModel {
 
     public final ObservableBoolean mShowLoading = new ObservableBoolean();
 
-    private final MutableLiveData<Resource<List<Boardgame>>> mBorrowedGamesData = new MutableLiveData<>();
+    private final MutableLiveData<Resource<List<String>>> mBorrowedGamesData = new MutableLiveData<>();
 
-    private final MutableLiveData<Boardgame> mProductClickedEvent = new MutableLiveData<>();
+    private final MutableLiveData<String> mProductClickedEvent = new MutableLiveData<>();
 
     private GetCurrentBorrowedGamesUseCase mUseCase;
 
@@ -35,11 +35,11 @@ public class ReturnListViewModel extends BaseViewModel {
         mUseCase = useCase;
     }
 
-    MutableLiveData<Resource<List<Boardgame>>> getBorrowedGamesData() {
+    MutableLiveData<Resource<List<String>>> getBorrowedGamesData() {
         return mBorrowedGamesData;
     }
 
-    MutableLiveData<Boardgame> getProductClickedEvent() {
+    MutableLiveData<String> getProductClickedEvent() {
         return mProductClickedEvent;
     }
 
@@ -53,7 +53,7 @@ public class ReturnListViewModel extends BaseViewModel {
         mShowLoading.set(true);
     }
 
-    private void onSuccess(List<Boardgame> boardgames) {
+    private void onSuccess(List<String> boardgames) {
         mShowLoading.set(false);
         mBorrowedGamesData.setValue(Resource.success(boardgames));
     }

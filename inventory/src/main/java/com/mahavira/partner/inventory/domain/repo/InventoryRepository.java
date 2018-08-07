@@ -1,6 +1,5 @@
 package com.mahavira.partner.inventory.domain.repo;
 
-import com.mahavira.partner.base.entity.Boardgame;
 import com.mahavira.partner.inventory.domain.entity.ReturnRequest;
 
 import java.util.List;
@@ -14,7 +13,7 @@ import io.reactivex.Single;
  */
 
 public interface InventoryRepository {
-    Single<List<Boardgame>> getPartnerBorrowedGames(String email);
+    Single<List<String>> getPartnerBorrowedGames(String email);
 
     Completable returnGames(ReturnRequest request);
 }

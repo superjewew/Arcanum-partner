@@ -6,7 +6,7 @@
     <data>
         <import type="java.util.List"/>
         <import type="com.mahavira.partner.base.entity.Boardgame"/>
-        <variable name="borrowed" type="List&lt;Boardgame>"/>
+        <variable name="borrowed" type="List&lt;String>"/>
     </data>
 
     <android.support.constraint.ConstraintLayout

@@ -24,9 +24,7 @@ public class Partner {
     int visitorToday;
     int visitorThisMonth;
     String lastUpdated;
-
-    @ParcelPropertyConverter(ProductListParcelConverter.class)
-    List<Boardgame> borrowedGames = new ArrayList<>();
+    List<String> borrowedGames = new ArrayList<>();
 
     public String getName() {
         return name;
@@ -100,11 +98,11 @@ public class Partner {
         this.lastUpdated = lastUpdated;
     }
 
-    public List<Boardgame> getBorrowedGames() {
+    public List<String> getBorrowedGames() {
         return borrowedGames;
     }
 
-    public void setBorrowedGames(List<Boardgame> borrowedGames) {
+    public void setBorrowedGames(List<String> borrowedGames) {
         this.borrowedGames = borrowedGames;
     }
 }

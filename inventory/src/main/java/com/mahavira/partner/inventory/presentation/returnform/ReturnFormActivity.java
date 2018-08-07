@@ -5,7 +5,6 @@ import android.support.annotation.NonNull;
 import android.widget.Toast;
 
 import com.mahavira.partner.base.entity.Boardgame;
-import com.mahavira.partner.base.entity.Partner;
 import com.mahavira.partner.base.presentation.BaseActivity;
 import com.mahavira.partner.base.presentation.ExtraInjectable;
 import com.mahavira.partner.inventory.BR;
@@ -19,9 +18,7 @@ public class ReturnFormActivity extends BaseActivity<ActivityReturnFormBinding, 
 
     public static final String PRODUCT_EXTRA = "product";
 
-    private Boardgame mProduct;
-
-    private Partner mPartner;
+    private String mProduct;
 
     @Override
     public int getViewModelBindingVariable() {
@@ -41,7 +38,7 @@ public class ReturnFormActivity extends BaseActivity<ActivityReturnFormBinding, 
         getAndObserveReturnRequestData();
 
         getViewModel().attemptGetProfile();
-        getDataBinding().setProduct(mProduct);
+//        getDataBinding().setProduct(mProduct);
     }
 
     private void getAndObserveReturnRequestData() {
@@ -65,7 +62,6 @@ public class ReturnFormActivity extends BaseActivity<ActivityReturnFormBinding, 
             if(partnerResource != null) {
                 switch (partnerResource.status) {
                     case SUCCESS:
-                        mPartner = partnerResource.data;
                         getDataBinding().setPartner(partnerResource.data);
                         break;
                     case ERROR:
@@ -79,7 +75,7 @@ public class ReturnFormActivity extends BaseActivity<ActivityReturnFormBinding, 
     @Override
     public void injectExtras(@NonNull Bundle extras) {
         if(extras.containsKey(PRODUCT_EXTRA)) {
-            mProduct = Parcels.unwrap(extras.getParcelable(PRODUCT_EXTRA));
+            mProduct = extras.getString(PRODUCT_EXTRA);
         }
     }
 }

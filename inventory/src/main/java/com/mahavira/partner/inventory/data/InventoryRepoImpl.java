@@ -37,7 +37,7 @@ public class InventoryRepoImpl implements InventoryRepository {
     }
 
     @Override
-    public Single<List<Boardgame>> getPartnerBorrowedGames(String email) {
+    public Single<List<String>> getPartnerBorrowedGames(String email) {
         Single<Partner> partner = getValue(mInstance.collection(PARTNER_COLLECTION).document(email), Partner.class).toSingle();
         return partner.map(Partner::getBorrowedGames);
     }

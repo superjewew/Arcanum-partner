@@ -15,11 +15,11 @@ import java.util.List;
 public class DashboardBindingAdapter {
 
     @BindingAdapter("app:borrowedList")
-    public static void setBorrowedList(LinearLayout view, List<Boardgame> boardgames) {
+    public static void setBorrowedList(LinearLayout view, List<String> boardgames) {
         if(boardgames != null) {
-            for(Boardgame boardgame : boardgames) {
+            for(String boardgame : boardgames) {
                 TextView textView = new TextView(view.getContext());
-                textView.setText(boardgame.getName());
+                textView.setText(boardgame);
                 view.addView(textView);
             }
         }

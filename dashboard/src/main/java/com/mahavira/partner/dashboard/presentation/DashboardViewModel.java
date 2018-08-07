@@ -30,7 +30,7 @@ public class DashboardViewModel extends BaseViewModel {
 
     private final MutableLiveData<Resource<Partner>> mPartnerData = new MutableLiveData<>();
 
-    private final MutableLiveData<Resource<List<Boardgame>>> mBorrowedGames = new MutableLiveData<>();
+    private final MutableLiveData<Resource<List<String>>> mBorrowedGames = new MutableLiveData<>();
 
     private final CompositeDisposable mDisposable = new CompositeDisposable();
 
@@ -58,7 +58,7 @@ public class DashboardViewModel extends BaseViewModel {
         return mPartnerData;
     }
 
-    public MutableLiveData<Resource<List<Boardgame>>> getBorrowedGames() {
+    public MutableLiveData<Resource<List<String>>> getBorrowedGames() {
         return mBorrowedGames;
     }
 
@@ -74,7 +74,7 @@ public class DashboardViewModel extends BaseViewModel {
         mBorrowedGames.setValue(Resource.error(null, throwable.getLocalizedMessage(), null));
     }
 
-    private void onGetBorrowedSuccess(List<Boardgame> boardgames) {
+    private void onGetBorrowedSuccess(List<String> boardgames) {
         mBorrowedGames.setValue(Resource.success(boardgames));
     }
 
