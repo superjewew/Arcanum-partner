@@ -2,8 +2,10 @@ package com.mahavira.partner.inventory.presentation.returnform;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.widget.Toast;
 
 import com.mahavira.partner.base.entity.Boardgame;
+import com.mahavira.partner.base.entity.Partner;
 import com.mahavira.partner.base.presentation.BaseActivity;
 import com.mahavira.partner.base.presentation.ExtraInjectable;
 import com.mahavira.partner.inventory.BR;
@@ -19,6 +21,8 @@ public class ReturnFormActivity extends BaseActivity<ActivityReturnFormBinding, 
 
     private Boardgame mProduct;
 
+    private Partner mPartner;
+
     @Override
     public int getViewModelBindingVariable() {
         return BR.viewModel;
@@ -32,7 +36,44 @@ public class ReturnFormActivity extends BaseActivity<ActivityReturnFormBinding, 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_return_form);
+
+        getAndObservePartnerData();
+        getAndObserveReturnRequestData();
+
+        getViewModel().attemptGetProfile();
+        getDataBinding().setProduct(mProduct);
+    }
+
+    private void getAndObserveReturnRequestData() {
+        getViewModel().getReturnRequestData().observe(this, returnRequest -> {
+            if(returnRequest != null) {
+                switch (returnRequest.status) {
+                    case SUCCESS:
+                        Toast.makeText(this, "Request Submitted", Toast.LENGTH_SHORT).show();
+                        finish();
+                        break;
+                    case ERROR:
+                        Toast.makeText(this, returnRequest.message, Toast.LENGTH_SHORT).show();
+                        break;
+                }
+            }
+        });
+    }
+
+    private void getAndObservePartnerData() {
+        getViewModel().getPartnerData().observe(this, partnerResource -> {
+            if(partnerResource != null) {
+                switch (partnerResource.status) {
+                    case SUCCESS:
+                        mPartner = partnerResource.data;
+                        getDataBinding().setPartner(partnerResource.data);
+                        break;
+                    case ERROR:
+                        Toast.makeText(this, partnerResource.message, Toast.LENGTH_SHORT).show();
+                        break;
+                }
+            }
+        });
     }
 
     @Override
