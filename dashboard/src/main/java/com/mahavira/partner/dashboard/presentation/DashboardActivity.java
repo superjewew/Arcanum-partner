@@ -55,9 +55,23 @@ public class DashboardActivity extends BaseActivity<ActivityDashboardBinding, Da
             }
         });
 
+        getViewModel().getBorrowedGames().observe(this, listResource -> {
+            if(listResource != null) {
+                switch (listResource.status) {
+                    case SUCCESS:
+                        getDataBinding().setBorrowed(listResource.data);
+                        break;
+                    case ERROR:
+                        break;
+                }
+            }
+        });
+
         getViewModel().attemptGetProfile(mPartnerEmail);
 
         getViewModel().attemptSaveLoggedProfile(mPartnerEmail);
+
+        getViewModel().attemptGetBorrowedGames(mPartnerEmail);
     }
 
     @Override

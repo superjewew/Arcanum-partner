@@ -4,7 +4,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
+        <import type="java.util.List"/>
+        <import type="com.mahavira.partner.base.entity.Boardgame"/>
+        <variable name="borrowed" type="List&lt;Boardgame>"/>
     </data>
 
     <android.support.constraint.ConstraintLayout
@@ -12,12 +14,20 @@
         android:layout_height="match_parent"
         tools:context="com.mahavira.partner.dashboard.presentation.DashboardActivity">
 
+        <LinearLayout
+            android:id="@+id/borrowed_games_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:borrowedList="@{borrowed}"
+            />
+
         <Button
             android:id="@+id/return_games_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/return_games_btn_txt"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toBottomOf="@id/borrowed_games_list"/>
 
         <Button
             android:id="@+id/confirm_guest_btn"
