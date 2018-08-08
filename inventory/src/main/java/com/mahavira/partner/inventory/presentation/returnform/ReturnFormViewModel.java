@@ -98,9 +98,8 @@ public class ReturnFormViewModel extends BaseViewModel {
         mBoardgameData.setValue(Resource.success(boardgame));
     }
 
-    public void attemptReturnGames(Boardgame product, Partner partner) {
-        ReturnRequest req = createReturnRequest(product, partner);
-        mDisposable.add(mReturnGamesUseCase.execute(req)
+    public void attemptReturnGames(ReturnRequest request) {
+        mDisposable.add(mReturnGamesUseCase.execute(request)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe(__ -> doOnSubscribe())
@@ -108,7 +107,7 @@ public class ReturnFormViewModel extends BaseViewModel {
     }
 
     private void doOnSubscribe() {
-//        mShowLoading.set(true);
+        mShowLoading.set(true);
         mReturnRequestData.setValue(Resource.loading(null));
     }
 
