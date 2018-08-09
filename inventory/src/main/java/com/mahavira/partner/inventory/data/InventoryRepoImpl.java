@@ -47,7 +47,7 @@ public class InventoryRepoImpl implements InventoryRepository {
 
     @Override
     public Completable returnGames(ReturnRequest request) {
-        return addValue(mInstance.collection(RETURN_REQUEST_COLLECTION), request);
+        return createReturnRequest(mInstance.collection(RETURN_REQUEST_COLLECTION), request);
     }
 
     @Override
@@ -65,10 +65,14 @@ public class InventoryRepoImpl implements InventoryRepository {
     }
 
     @NonNull
-    private Completable addValue(@NonNull final CollectionReference ref, final Object value) {
+    private Completable createReturnRequest(@NonNull final CollectionReference ref, final ReturnRequest value) {
         return Completable.create(
-                e -> ref.add(value)
-                        .addOnSuccessListener(documentReference -> e.onComplete())
-                        .addOnFailureListener(e::onError));
+                e -> {
+                    DocumentReference docRef = ref.document();
+                    value.setId(docRef.getId());
+                    docRef.set(value)
+                    .addOnSuccessListener(documentReference -> e.onComplete())
+                    .addOnFailureListener(e::onError);
+                });
     }
 }

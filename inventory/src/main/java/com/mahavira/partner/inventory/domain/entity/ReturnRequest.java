@@ -8,9 +8,18 @@ import java.util.Map;
 
 public class ReturnRequest {
 
+    String id;
     String productName;
     String from;
     Map<String, Boolean> checklist;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getProductName() {
         return productName;
