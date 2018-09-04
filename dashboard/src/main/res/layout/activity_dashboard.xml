@@ -30,10 +30,10 @@
             app:layout_constraintTop_toBottomOf="@id/borrowed_games_list"/>
 
         <Button
-            android:id="@+id/confirm_guest_btn"
+            android:id="@+id/generate_qr_store_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/confirm_guest_btn_txt"
+            android:text="@string/generate_qr_btn_txt"
             app:layout_constraintTop_toBottomOf="@id/return_games_btn"/>
 
     </android.support.constraint.ConstraintLayout>
