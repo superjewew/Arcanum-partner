@@ -5,9 +5,13 @@ import android.content.Context;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.mahavira.arcanumpartner.UserSharedPrefsImpl;
 import com.mahavira.arcanumpartner.router.DashboardRouterImpl;
+import com.mahavira.arcanumpartner.router.InventoryRouterImpl;
 import com.mahavira.arcanumpartner.router.LoginRouterImpl;
+import com.mahavira.partner.base.prefs.UserSharedPrefs;
 import com.mahavira.partner.dashboard.presentation.DashboardRouter;
+import com.mahavira.partner.inventory.presentation.InventoryRouter;
 import com.mahavira.partner.login.LoginRouter;
 
 import javax.inject.Singleton;
@@ -49,5 +53,15 @@ class AppModule {
     @Provides
     DashboardRouter provideDashboardRouter() {
         return new DashboardRouterImpl();
+    }
+
+    @Provides
+    InventoryRouter provideInventoryRouter() {
+        return new InventoryRouterImpl();
+    }
+
+    @Provides
+    UserSharedPrefs provideUserSharedPrefs(Context context) {
+        return new UserSharedPrefsImpl(context);
     }
 }

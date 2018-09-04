@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="product"
+            type="String"/>
+        <variable
+            name="clickListener"
+            type="com.mahavira.partner.inventory.presentation.returnlist.ReturnListAdapter.ItemClickListener"/>
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:onClick="@{() -> clickListener.onItemClicked(product)}">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{product}"
+            tools:text="123123"/>
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

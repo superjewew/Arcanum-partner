@@ -13,8 +13,9 @@ import com.mahavira.partner.dashboard.presentation.DashboardRouter;
 
 public class DashboardRouterImpl implements DashboardRouter {
     @Override
-    public void goToDashboard(Context context) {
+    public void goToDashboard(Context context, String email) {
         Intent intent = new Intent(context, DashboardActivity.class);
+        intent.putExtra(DashboardActivity.EMAIL_EXTRA, email);
         context.startActivity(intent);
     }
 }

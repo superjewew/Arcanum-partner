@@ -52,6 +52,21 @@ dependencies {
     annotationProcessor libs.daggerCompiler
     annotationProcessor libs.daggerAndroidProcessor
 
-    implementation project(path: ':base')
+    // RxJava
+    implementation libs.rxAndroid
+    implementation libs.rxJava
 
+    // DataBinding
+    implementation libs.databindingBaseLibrary
+    implementation libs.databindingLibrary
+
+    // Parceler
+    implementation libs.parcelerApi
+    annotationProcessor libs.parceler
+
+    implementation libs.zxingCore
+
+    implementation project(path: ':base')
+    implementation project(path: ':profile')
+    implementation project(path: ':inventory')
 }

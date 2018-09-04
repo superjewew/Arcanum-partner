@@ -8,5 +8,5 @@ import android.content.Context;
  */
 
 public interface DashboardRouter {
-    void goToDashboard(Context context);
+    void goToDashboard(Context context, String email);
 }

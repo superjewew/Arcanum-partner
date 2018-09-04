@@ -19,6 +19,7 @@ ext {
     rxAndroidVersion = '2.0.1'
     rxJavaVersion = '2.1.9'
     parcelerVersion = '1.1.11'
+    zxingCoreVersion = '3.3.0'
 
     libraries = [
             supportV4             : "com.android.support:support-v4:$supportLibraryVersion",
@@ -51,7 +52,8 @@ ext {
             rxAndroid             : "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion",
             rxJava                : "io.reactivex.rxjava2:rxjava:$rxJavaVersion",
             parcelerApi           : "org.parceler:parceler-api:$parcelerVersion",
-            parceler              : "org.parceler:parceler:$parcelerVersion"
+            parceler              : "org.parceler:parceler:$parcelerVersion",
+            zxingCore             : "com.google.zxing:core:$zxingCoreVersion"
 
     ]
 }
