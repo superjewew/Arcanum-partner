@@ -20,9 +20,12 @@ import com.mahavira.partner.base.presentation.ExtraInjectable;
 import com.mahavira.partner.dashboard.R;
 import com.mahavira.partner.dashboard.databinding.ActivityDashboardBinding;
 import com.mahavira.partner.inventory.presentation.InventoryRouter;
+import com.tozny.crypto.android.AesCbcWithIntegrity;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.security.GeneralSecurityException;
 import javax.inject.Inject;
 
 public class DashboardActivity extends BaseActivity<ActivityDashboardBinding, DashboardViewModel> implements ExtraInjectable {
@@ -100,7 +103,12 @@ public class DashboardActivity extends BaseActivity<ActivityDashboardBinding, Da
     private void createQrCodeImageFile() {
         QRCodeWriter writer = new QRCodeWriter();
         try {
-            BitMatrix bitMatrix = writer.encode(mPartnerEmail, BarcodeFormat.QR_CODE, 512, 512);
+            AesCbcWithIntegrity.SecretKeys keys = AesCbcWithIntegrity.generateKey();
+
+            AesCbcWithIntegrity.CipherTextIvMac cipherTextIvMac = AesCbcWithIntegrity.encrypt(mPartnerEmail, keys);
+            String ciphertextString = cipherTextIvMac.toString();
+
+            BitMatrix bitMatrix = writer.encode(ciphertextString, BarcodeFormat.QR_CODE, 512, 512);
             int width = bitMatrix.getWidth();
             int height = bitMatrix.getHeight();
             Bitmap bmp = Bitmap.createBitmap(width, height, Bitmap.Config.RGB_565);
@@ -130,6 +138,10 @@ public class DashboardActivity extends BaseActivity<ActivityDashboardBinding, Da
             }
 
         } catch (WriterException e) {
+            e.printStackTrace();
+        } catch (GeneralSecurityException e) {
+            e.printStackTrace();
+        } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
     }

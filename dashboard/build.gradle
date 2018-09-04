@@ -64,7 +64,10 @@ dependencies {
     implementation libs.parcelerApi
     annotationProcessor libs.parceler
 
+    // Zxing
     implementation libs.zxingCore
+
+    compile 'com.github.tozny:java-aes-crypto:1.1.0'
 
     implementation project(path: ':base')
     implementation project(path: ':profile')
