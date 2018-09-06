@@ -14,13 +14,13 @@ import com.google.zxing.BarcodeFormat;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
+import com.mahavira.partner.base.entity.EncryptedString;
 import com.mahavira.partner.base.prefs.UserSharedPrefs;
 import com.mahavira.partner.base.presentation.BaseActivity;
 import com.mahavira.partner.base.presentation.ExtraInjectable;
 import com.mahavira.partner.dashboard.R;
 import com.mahavira.partner.dashboard.databinding.ActivityDashboardBinding;
 import com.mahavira.partner.inventory.presentation.InventoryRouter;
-import com.tozny.crypto.android.AesCbcWithIntegrity;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -103,12 +103,9 @@ public class DashboardActivity extends BaseActivity<ActivityDashboardBinding, Da
     private void createQrCodeImageFile() {
         QRCodeWriter writer = new QRCodeWriter();
         try {
-            AesCbcWithIntegrity.SecretKeys keys = AesCbcWithIntegrity.generateKey();
+            EncryptedString ciphertextString = new EncryptedString(mPartnerEmail).encryptMsg();
 
-            AesCbcWithIntegrity.CipherTextIvMac cipherTextIvMac = AesCbcWithIntegrity.encrypt(mPartnerEmail, keys);
-            String ciphertextString = cipherTextIvMac.toString();
-
-            BitMatrix bitMatrix = writer.encode(ciphertextString, BarcodeFormat.QR_CODE, 512, 512);
+            BitMatrix bitMatrix = writer.encode(ciphertextString.getValue(), BarcodeFormat.QR_CODE, 512, 512);
             int width = bitMatrix.getWidth();
             int height = bitMatrix.getHeight();
             Bitmap bmp = Bitmap.createBitmap(width, height, Bitmap.Config.RGB_565);
