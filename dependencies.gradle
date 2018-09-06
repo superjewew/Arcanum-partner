@@ -20,6 +20,7 @@ ext {
     rxJavaVersion = '2.1.9'
     parcelerVersion = '1.1.11'
     zxingCoreVersion = '3.3.0'
+    spongyCastleVersion = '1.54.0.0'
 
     libraries = [
             supportV4             : "com.android.support:support-v4:$supportLibraryVersion",
@@ -53,7 +54,9 @@ ext {
             rxJava                : "io.reactivex.rxjava2:rxjava:$rxJavaVersion",
             parcelerApi           : "org.parceler:parceler-api:$parcelerVersion",
             parceler              : "org.parceler:parceler:$parcelerVersion",
-            zxingCore             : "com.google.zxing:core:$zxingCoreVersion"
+            zxingCore             : "com.google.zxing:core:$zxingCoreVersion",
+            spongyCastleCore      : "com.madgag.spongycastle:core:$spongyCastleVersion",
+            spongyCastleProv      : "com.madgag.spongycastle:prov:$spongyCastleVersion"
 
     ]
 }

@@ -69,4 +69,8 @@ dependencies {
     // Parceler
     implementation libs.parcelerApi
     annotationProcessor libs.parceler
+
+    // SpongyCastle
+    implementation libs.spongyCastleCore
+    implementation libs.spongyCastleProv
 }
